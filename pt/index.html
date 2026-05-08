@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carlos Santos — Sistemas & Automação</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root
+{
+    --bg: #f5f5f2;
+    --panel: #ffffff;
+    --soft: #ecece8;
+    --border: #d8d8d2;
+
+    --text: #111111;
+    --muted: #444444;
+
+    --accent: #111111;
+
+    --max_width: 1150px;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+body
+{
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+img
+{
+    width: 100%;
+    display: block;
+}
+
+.container
+{
+    width: 100%;
+    max-width: var(--max_width);
+
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+nav
+{
+    position: sticky;
+    top: 0;
+
+    background: rgba(245,245,242,0.82);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+
+    z-index: 100;
+}
+
+.nav_inner
+{
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo
+{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.nav_links
+{
+    display: flex;
+    gap: 24px;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.hero
+{
+    min-height: 74vh;
+
+    display: flex;
+    align-items: center;
+}
+
+.project_summary {
+    padding: 28px;
+    padding-top: 0px;
+}
+
+.project_close {
+    padding: 28px;
+    border: none;
+    background: none;
+}
+
+.hero_layout
+{
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.hero_content
+{
+    max-width: 700px;
+}
+
+.hero_tag
+{
+    margin-bottom: 20px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hero h1
+{
+    font-size: clamp(42px, 9vw, 110px);
+
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+
+    margin-bottom: 28px;
+}
+
+.hero_desc
+{
+    max-width: 620px;
+
+    color: var(--muted);
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+.btn svg{
+    transform: translateY(2px);
+}
+
+.hero_buttons
+{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn
+{
+    padding: 14px 22px;
+
+    border-radius: 999px;
+
+    border: 1px solid var(--border);
+
+    transition: 0.2s ease;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    background: white;
+}
+
+.btn:hover
+{
+    background: #111111;
+    color: white;
+}
+
+.hero_image_wrapper
+{
+    display: flex;
+    justify-content: center;
+}
+
+.hero_image
+{
+    width: 320px;
+    height: 320px;
+
+    border-radius: 32px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    background: #d9d9d9;
+}
+
+.hero_image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section
+{
+    padding: 120px 0;
+}
+
+.section_header
+{
+    margin-bottom: 0px;
+}
+
+.section_label
+{
+    color: var(--muted);
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+}
+
+.section_title
+{
+    font-size: clamp(32px, 5vw, 58px);
+
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.projects_grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 28px;
+}
+
+.project_card
+{
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    transition: transform 0.2s ease;
+}
+
+.project_card:hover
+{
+    transform: translateY(-4px);
+}
+
+.project_visual
+{
+    height: 220px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f2f2f2,
+        #e4e4e4
+    );
+
+    border-bottom: 1px solid var(--border);
+}
+
+.project_content
+{
+    padding: 28px;
+    padding-top: 0px;
+}
+
+.project_title
+{
+    font-size: 24px;
+    margin-bottom: 14px;
+}
+
+.project_desc
+{
+    color: var(--muted);
+    margin-bottom: 22px;
+    font-size: 0.875rem;
+}
+
+.project_meta
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.875rem;
+}
+
+.tag
+{
+    padding: 8px 12px;
+
+    background: var(--soft);
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+.about
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.about_text
+{
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.stats
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.stat
+{
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.stat h3
+{
+    font-size: 42px;
+    margin-bottom: 4px;
+}
+
+.stat p
+{
+    color: var(--muted);
+}
+
+.contact_box
+{
+    padding: 48px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 32px;
+}
+
+.contact_box h2
+{
+    font-size: clamp(32px, 5vw, 56px);
+
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+    margin-bottom: 24px;
+}
+
+.contact_box p
+{
+    max-width: 650px;
+
+    color: var(--muted);
+
+    margin-bottom: 32px;
+}
+
+.footer
+{
+    padding: 40px 0;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+@media(max-width: 980px)
+{
+    .hero_layout
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .hero_image_wrapper
+    {
+        justify-content: flex-start;
+    }
+
+    .about
+    {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 640px)
+{
+    .nav_links
+    {
+        display: none;
+    }
+
+    .hero_image
+    {
+        width: 220px;
+        height: 220px;
+    }
+
+    .section
+    {
+        padding: 0px 0;
+    }
+
+    .contact_box
+    {
+        padding: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav_inner">
+
+        <div class="logo">
+            Carlos Santos
+        </div>
+
+        <a class="btn" href="../en/index.html">
+            EN
+        </a>
+        <a class="btn" href="../pt/index.html">
+            PT
+        </a>
+
+        <div class="nav_links">
+            <a href="#projects">Projects</a>
+            <a href="#footer">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
+<section class="hero">
+
+   <div class="container">
+
+        <div class="hero_layout">
+
+            <div class="hero_content">
+
+                <div class="hero_image_wrapper">
+                    <div class="hero_image">
+                        <img src="your_photo.jpg" alt="Profile Photo">
+                    </div>
+                </div>
+
+                <div class="hero_tag">
+                    Systems • Automation
+                </div>
+
+                <h1>
+                    oi, sou Carlos
+                </h1>
+
+                <p class="hero_desc">
+                    backend e sistemas
+                    <br>
+                    prefiro o simples que é confiável
+                </p>
+
+                <div class="hero_buttons">
+
+                    <a class="btn" href="#projects">
+                        Baixar Currículo
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M12 18v-6"></path>
+                        <path d="m9 15 3 3 3-3"></path>
+                    </svg>
+                    </a>
+
+                    <a class="btn" href="#footer">
+                        Contato
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section" id="projects">
+
+    <div class="container">
+
+        <div class="section_header">
+
+            <div class="section_label">
+                Experiência
+            </div>
+
+        </div>
+
+        <div class="projects_grid">
+
+
+<article class="project_card">
+
+    <details class="project_wrapper">
+
+        <summary class='project_summary'>
+
+            <h3 class="project_title">
+                Automação de Workflow
+            </h3>
+
+            <h4>
+                Freelancer / Prestador de Serviço Independente
+            </h4>
+
+
+            <h5>
+                2026
+            </h5>
+
+            Desenvolvi e mantenho ativamente um pipeline de automação baseado em Selenium para workflows de análise de preços.
+
+        </summary>
+
+        <div class="project_content">
+
+            <p class="project_desc">
+                • Automatizei interação com navegador e interceptação de requisições
+                <br>• Integrei datasets em Excel em um pipeline de filtragem e análise
+                <br>• Gerei visualizações com matplotlib exportadas como relatórios HTML portáteis
+                <br>• Persisti dados processados em CSV e SQLite para análises posteriores
+                <br>• Continuei mantendo e expandindo o sistema conforme necessidades operacionais
+            </p>
+
+            <h5>
+                Impacto
+            </h5>
+
+            <div class="project_meta">
+                <br>• Reduzi etapas repetitivas de workflows manuais para usuários finais
+                <br>• Melhorei a confiabilidade e consistência das operações de análise de preços
+                <br>• Possibilitei tomadas de decisão mais rápidas através de pipelines automatizados de relatórios
+            </div>
+
+        </div>
+
+        <button
+            class="project_close"
+            onclick="this.closest('details').removeAttribute('open')"
+        >
+            ▲
+        </button>
+
+    </details>
+
+</article>
+
+<article class="project_card">
+
+    <details class="project_wrapper">
+
+        <summary class="project_summary">
+
+            <h3 class="project_title">
+                Automação de Geração de Leads
+            </h3>
+
+            <h4>
+                Freelancer / Prestador de Serviço Independente
+            </h4>
+
+            <h5>
+                2024
+            </h5>
+
+            Desenvolvi um workflow de automação baseado em Python para descoberta e exportação de leads comerciais através de integrações com Google Maps.
+
+        </summary>
+
+        <div class="project_content">
+
+            <p class="project_desc">
+                • Automatizei workflows de descoberta de empresas e coleta de dados
+                <br>• Integrei APIs do Google para obtenção estruturada de leads
+                <br>• Exportei resultados para CSV e relatórios HTML portáteis com acesso otimizado para mobile
+                <br>• Desenvolvi workflows leves de relatórios para usuários não técnicos
+            </p>
+
+            <h5>
+                Impacto
+            </h5>
+
+            <div class="project_meta">
+                <br>• Reduzi o tempo gasto manualmente na busca de leads
+                <br>• Permiti que usuários focassem em prospecção direta ao invés de coleta de dados
+                <br>• Melhorei a eficiência do workflow de aquisição de leads
+            </div>
+
+        </div>
+
+        <button
+            class="project_close"
+            onclick="this.closest('details').removeAttribute('open')"
+        >
+            ▲
+        </button>
+
+    </details>
+
+</article>
+
+<article class="project_card">
+
+    <details class="project_wrapper">
+
+        <summary class="project_summary">
+
+            <h3 class="project_title">
+                Desenvolvedor Solo, MMOARPG 2D
+            </h3>
+
+            <h4>
+                Projeto Pessoal de Longo Prazo
+            </h4>
+
+            <h5>
+                2025 - Em andamento
+            </h5>
+
+            Projeto solo de longo prazo focado em sistemas multiplayer em tempo real, persistência e arquitetura escalável de gameplay.
+
+        </summary>
+
+        <div class="project_content">
+
+            <p class="project_desc">
+                • Desenvolvi arquitetura multiplayer server-authoritative com replicação sincronizada de combate e estados
+                <br>• Projetei sistemas persistentes de inventário, atributos e habilidades
+                <br>• Criei pipelines determinísticos combinatórios de modificadores e combate para buffs dinâmicos, passivas e interações entre equipamentos
+                <br>• Desenvolvi sistemas de chat multiplayer em tempo real
+                <br>• Otimizei sistemas runtime para grandes quantidades de entidades ativas
+                <br>• Resolvi race conditions e problemas de dessincronização de estados multiplayer
+                <br>• Desenvolvi ferramentas internas de debugging e visualização para acelerar iteração
+                <br>• Implementei workflows automatizados e testes de regressão para reduzir regressões do sistema
+            </p>
+
+            <h5>
+                Impacto
+            </h5>
+
+            <div class="project_meta">
+                <br>• Desenvolvi experiência de longo prazo em sistemas realtime, persistência, debugging e sincronização multiplayer
+                <br>• Criei ferramentas e workflows que possibilitaram rápida iteração entre sistemas de gameplay interconectados
+                <br>• Mantive uma codebase solo de grande escala envolvendo networking, gameplay, persistência e tooling
+            </div>
+
+            <h5>
+                Demonstração técnica e walkthrough ao vivo disponíveis durante chamada
+            </h5>
+
+        </div>
+
+        <button
+            class="project_close"
+            onclick="this.closest('details').removeAttribute('open')"
+        >
+            ▲
+        </button>
+
+    </details>
+
+</article>
+
+<article class="project_card">
+
+    <details class="project_wrapper">
+
+        <summary class="project_summary">
+
+            <h3 class="project_title">
+                Recuperação de Backend / Sistemas Legados
+            </h3>
+
+            <h4>
+                Freelancer / Prestador de Serviço Independente
+            </h4>
+
+            <h5>
+                2023 - 2024
+            </h5>
+
+            Recuperei e modernizei uma infraestrutura legada de jogo/servidor multiplayer após o antigo responsável tornar-se indisponível.
+
+        </summary>
+
+        <div class="project_content">
+
+            <p class="project_desc">
+                • Restaurei e reconstruí uma codebase legada de aproximadamente 20 anos em C++/Lua para uma build funcional de produção
+                <br>• Migrei toda a stack da aplicação para um novo ambiente VPS
+                <br>• Implantei e estabilizei uma infraestrutura LAMP legada enquanto resolvia problemas de dependência e compatibilidade
+                <br>• Implementei sistemas de detecção de perda de conexão impedindo que jogadores desconectados permanecessem como alvos de ataque
+                <br>• Desenvolvi sistemas de gameplay e lógica de NPCs/quests utilizando Lua e MySQL
+                <br>• Integrei processamento de pagamentos PagSeguro na stack PHP/MySQL do website
+                <br>• Persisti dados de callback de pagamento e sincronizei itens comprados com contas ingame
+            </p>
+
+            <h5>
+                Impacto
+            </h5>
+
+            <div class="project_meta">
+                <br>• Restaurei um projeto anteriormente inoperante para uma implantação estável em produção
+                <br>• Permiti que o proprietário relançasse e monetizasse a infraestrutura do jogo
+                <br>• Melhorei estabilidade operacional e manutenção dos sistemas legados
+            </div>
+
+        </div>
+
+        <button
+            class="project_close"
+            onclick="this.closest('details').removeAttribute('open')"
+        >
+            ▲
+        </button>
+
+    </details>
+
+</article>
+
+
+<article class="project_card">
+
+    <details class="project_wrapper">
+
+        <summary class="project_summary">
+
+            <h3 class="project_title">
+                Automação de Consulta e Análise de Dados
+            </h3>
+
+            <h4>
+                Freelancer / Prestador de Serviço Independente
+            </h4>
+
+            <h5>
+                2023 - 2025
+            </h5>
+
+            Desenvolvi e mantive sistemas de automação e ETL de longa duração focados em agregação, normalização e entrega operacional de dados em tempo real.
+
+        </summary>
+
+        <div class="project_content">
+
+            <p class="project_desc">
+                • Realizei scraping e normalização de dados de múltiplas fontes externas para formatos internos unificados
+                <br>• Desenvolvi pipelines automatizados de processamento e entrega utilizando Python
+                <br>• Integrei APIs do Telegram para entrega em tempo real aos usuários
+                <br>• Implantei e mantive serviços 24/7 hospedados em VPS com workflows automatizados de atualização
+                <br>• Adicionei infraestrutura de entrega por múltiplos endpoints e assinaturas
+            </p>
+
+            <h5>
+                Impacto
+            </h5>
+
+            <div class="project_meta">
+                <br>• Reduzi drasticamente a carga de trabalho manual de análise
+                <br>• Aumentei a capacidade operacional além dos limites de processamento manual
+                <br>• Possibilitei workflows confiáveis de entrega de dados 24/7
+                <br>• Contribuí para aproximadamente 10x de crescimento de receita durante o período do projeto
+            </div>
+
+        </div>
+
+        <button
+            class="project_close"
+            onclick="this.closest('details').removeAttribute('open')"
+        >
+            ▲
+        </button>
+
+    </details>
+
+</article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer" id='footer'>
+
+    <div class="container">
+        © 2026 Carlos Santos
+        <div class="hero_buttons">
+
+            <a class="btn" href="mailto:ca.eduard0@live.com">
+                Email: ca.eduard0@live.com
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
